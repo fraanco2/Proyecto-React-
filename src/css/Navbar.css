@@ -1,5 +1,5 @@
 .nav-container{
-    background-color: black;
+    background-color:rgb(97, 96, 96);
     padding: 2rem;
     display:flex;
     justify-content: space-between;
@@ -7,7 +7,7 @@
 }
 
 .anchor-nav{
-    color: aliceblue;
+    color:black;
     text-decoration: none;
     cursor: pointer;
 }
