@@ -1,16 +1,35 @@
 .nav-container{
-    background-color:rgb(97, 96, 96);
+    background-color:black;
     padding: 2rem;
     display:flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .anchor-nav{
-    color:black;
+    color:rgb(212, 8, 8);
+    margin: 0 20px;
+    display: flex;
     text-decoration: none;
     cursor: pointer;
+
+}
+.logo-link {
+    display: flex;
+    align-items: center;
+    max-width: 120px;
 }
 .logo{
-    width: 8rem;
+    width: 6rem;
+    height: auto;
+    object-fit: contain;
+    background-color: black;
+}
+
+.nav-links {
+    display: flex;
+    text-align: center;
+    justify-content:center;
+    gap: 30px;
 }
