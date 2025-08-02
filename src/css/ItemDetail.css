@@ -1,0 +1,31 @@
+.Item-detail-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Item-detail-title{
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+.Item-detail-img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.Item-detail-description{
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+.Item-detail-stock{
+    font-weight: bold;
+    color: #666;
+}
+.Item-detail-precio{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #009688;
+    margin-bottom: 20px;
+}
