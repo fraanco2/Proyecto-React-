@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const ItemCount= ({stock=40}) => {
+const ItemCount= ({stock, onAdd}) => {
     const [count,setCount]=useState(1);
     
     const sumar = () => {
@@ -12,13 +12,14 @@ const ItemCount= ({stock=40}) => {
     };
     
          const restar = () => {
-         if (count > 1) {
+         if (count > 0) {
             setCount(count - 1);
         } else {
             console.log("No se puede reducir más. Mínimo es 1.");
        }
     };
     const comprar = () => {
+        onAdd(count)
         console.log(`Compraste ${count} producto(s)`)
    
     };
