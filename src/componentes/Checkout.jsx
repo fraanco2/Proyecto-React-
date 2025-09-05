@@ -4,6 +4,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { db } from "../service/firebase"
 import { Link } from "react-router-dom"
 import Swal from 'sweetalert2';
+import "../css/Checkout.css"
 
 const Checkout = () => {
     const [buyer , setBuyer]= useState({})
@@ -22,14 +23,18 @@ const Checkout = () => {
     const finalizarCompra = (e)=> {
         e.preventDefault()
         if(!buyer.name || !buyer.lastname || !buyer.address || !buyer.email){
-
-        }else if (buyer.email !== validMail){
+            Swal.fire({
+                icon: 'error',
+                title: 'Campos incompletos',
+                text: 'Por favor, completá todos los campos antes de finalizar la compra.'
+            })
+            return
+        } if (buyer.email !== validMail){
              const cartItems = [...cart];      
              const totalAmount = cartTotal();
-
-             if (cartItems.length === 0) {
-
-        }}else{
+             return
+    
+        }
         const order ={
             comprador:buyer,
             compras:cart,
@@ -48,20 +53,20 @@ const Checkout = () => {
         })
         .catch((error)=> console.log(error))
     }
-}
+
     return(
         <>
         {
             orderId
-            ?<div>
+            ?<div className="order-success">
                 <h2>Proceso de pago exitoso</h2>
                 <p>Su orden es :{orderId}</p>
                 <Link className="btn btn-dark" to="/">Volver al inicio</Link>
             </div>
         :
-        <div>
-            <h1>Proceso de Compra </h1>
-        <form onSubmit={finalizarCompra}>
+        <div className="checkout-container">
+            <h1 className="checkout-title">Proceso de Compra </h1>
+        <form onSubmit={finalizarCompra} className="checkout-form">
             <input className="form control" name="name" placeholder="Ingrese su nombre" type="text" onChange={buyerData}/>
             <input className="form control" name="lastname" placeholder="Ingrese su apellido" type="text"onChange={buyerData}/>
             <input className="form control" name="address" placeholder="direccion" type="text"onChange={buyerData}/>

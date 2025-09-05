@@ -1,12 +1,26 @@
 import React, { useContext } from "react"
 import { CartContext } from "../context/CartContext"
 import { Link } from "react-router-dom"
+import Swal from "sweetalert2"
+import "../css/CartView.css"
 
 const CartView = () => {
     const {cart,clear, removeItem, cartTotal }=useContext(CartContext)
+    const preOrder = ()=>{
+        Swal.fire({
+            title:"¿Quieres eliminar todo el carrito?",
+            showDenyButton:true,
+            denyButtonText:"No",
+            confirmButtonText:"Si",
+        }).then((result)=>{
+            if(result.isConfirmed){
+                clear()
+            }
+        })
+    }
     return (
-        <div>
-            <h1>Carrito</h1>
+        <div className="cart-container">
+            <h1 className="cart-title">Carrito</h1>
             <div>
                 {cart.map((compra)=>(
                     <div key={compra.id} style={{display:"flex" , justifyContent:"space-between" , alignItems:"center" , width:"100%" , padding:"2rem"}}>
@@ -19,9 +33,9 @@ const CartView = () => {
                     </div>
                 ))}
         </div>
-        <span>Total a pagar: ${cartTotal()}, 00</span>
-        <div>
-            <button className="btn btn-danger" onClick={clear}>Borrar Carrito</button>
+        <span className="cart-total">Total a pagar: ${cartTotal()}, 00</span>
+        <div className="cart-buttons">
+            <button className="btn btn-danger" onClick={preOrder}>Borrar Carrito</button>
             <Link className="btn btn-success" to="/checkout">Finalizar Compra</Link>
         </div>
         </div>

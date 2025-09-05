@@ -28,7 +28,6 @@ const ItemListContainer = ({saludos}) => {
     .finally(()=> setLoading(false))
   },[category])
     
-    console.log(data,"data")
     return(
       <div>
          <h1>{saludos}</h1>
